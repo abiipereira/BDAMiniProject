@@ -1,0 +1,10 @@
+#Calculate the number of movies that are rated on a scale of 1 to 5
+
+from pyspark import SparkConf,SparkContext
+import collections
+my_lines = sc.textFile('enterpathtoyourdatasethere')
+ratings = lines.map(lambda x : x.split()[2])
+res = ratings.countByValue()
+my_sortedres = collections.OrderedDict(sorted(res.items()))
+for key,value in sortedres.items():
+print ("%s %i" %(key,value))
